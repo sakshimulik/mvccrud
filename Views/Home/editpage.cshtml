@@ -1,0 +1,25 @@
+﻿@model IEnumerable<WebApplication6.Models.Users>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1>This is edit page</h1>
+<div class="jumbotron">
+@foreach (var list in Model)
+{
+    <form action="@Url.Action("Updateemp")" method="post">
+        <input type="hidden" name="id" value="@Html.DisplayFor(modelItem => list.id)" />
+        <input type="text" name="fname" placeholder="First Name" value="@Html.DisplayFor(modelItem => list.fname)" />
+        <input type="text" name="lname" placeholder="last Name" value="@Html.DisplayFor(modelItem => list.lname)" />
+        <input type="text" name="email" placeholder="Email" value="@Html.DisplayFor(modelItem => list.email)" />
+        <input type="text" name="city" placeholder="city" value="@Html.DisplayFor(modelItem => list.city)" />
+        <input type="text" name="address" placeholder="Adress" value="@Html.DisplayFor(modelItem => list.address)" />
+        <input type="submit" value="submit" />
+    </form>
+}
+    
+</div>
+
+

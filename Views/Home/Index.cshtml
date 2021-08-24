@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WebApplication6.Models.Users>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+
+
+
+
+
+
+
+
+<div class="jumbotron">
+    <form action="@Url.Action("Employee")" method="post">
+        <div class="row">
+            <div class="col">
+                <input type="text" name="fname" class="form-control" placeholder="First Name" />
+            </div>
+            <div class="col">
+                <input type="text" name="lname" class="form-control"  placeholder="last Name" />
+            </div>
+            </div>
+        <div class="row mt-2">
+            <div class="col">
+                <input type="text" name="email" class="form-control" placeholder="Email" />
+            </div>
+            <div class="col">
+                <input type="text" name="city" class="form-control" placeholder="city" />
+            </div>
+            </div>
+        <textarea class="form-control mt-2" name="address" rows="3" placeholder="Address"></textarea>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary  mt-3">Submit</button>
+        </div>
+</form> 
+</div>
+
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var list in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => list.id)</td>
+            <td>@Html.DisplayFor(modelItem => list.fname)</td>
+            <td>@Html.DisplayFor(modelItem => list.lname)</td>
+            <td>@Html.DisplayFor(modelItem => list.email)</td>
+            <td>@Html.DisplayFor(modelItem => list.city)</td>
+            <td>@Html.DisplayFor(modelItem => list.address)</td>
+            <td><a href="@Url.Action("editpage", "Home", new { edit = list.id })"><i class="bi bi-pencil-square"></i></a>  <a href="@Url.Action("delete_employee", "Home", new { id = list.id })"><i class="bi bi-trash-fill"></i></a></td>
+        </tr>
+
+
+    }
+</table>
